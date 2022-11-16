@@ -16,7 +16,7 @@ export class CurrencyPanelComponent implements OnInit {
   title!:any;
   constructor(public currencyService:CurrencyServiceService, public route:ActivatedRoute,
     public router: Router, private _location: Location) { 
-    // this.getCurrencyData();
+    this.getCurrencyData();
     
 
     if(this.router.url === '/'){
@@ -28,7 +28,7 @@ export class CurrencyPanelComponent implements OnInit {
       }
       this.title ='Currency Exchange';
       // console.log('home');
-      // this.default = this.getResult(this.model);
+      this.default = this.getResult(this.model);
     }else{
       // console.log('not   home');
      
@@ -40,10 +40,10 @@ export class CurrencyPanelComponent implements OnInit {
           'toCurrency':params.get('to'),
           
         }
-        console.log(this.model.fromCurrency, 'this.modelthis.model');
+        // console.log(this.model.fromCurrency, 'this.modelthis.model');
         this.getName(this.model.fromCurrency);
         
-        // this.default = this.getResult(this.model);
+        this.default = this.getResult(this.model);
       });
     }
     

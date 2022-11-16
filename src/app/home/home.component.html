@@ -4,15 +4,91 @@
 <div class="home-panel">
     <div class="row-part">
         <div class="cell-part" *ngFor="let r of latestyArray | keyvalue">
-            <div class="card" >
-                <a class="card-detail" [routerLink]="['/detail', this.base, r.key]" >
+            <div class="card" [routerLink]="['/detail', this.base, r.key]">
+                <a class="card-detail"  style="color: #000;text-decoration:none;font-size:16px;">
                  
                     <p>1 <b>{{this.base}}</b>  - {{r.value}} <b>{{r.key}}</b></p>
                 </a>
                
             </div>
         </div>
-        <!-- <div class="cell-part">
+
+
+        <!-- dummy -->
+        <div class="cell-part">
+            <div class="card" [routerLink]="['/detail', this.base, 'USD']">
+                <a class="card-detail"  style="color: #000;text-decoration:none;font-size:16px;">
+                    
+                    <p>33 usd -33 eur</p>
+                </a>
+               
+            </div>
+        </div>
+        <div class="cell-part">
+            <div class="card" [routerLink]="['/detail', this.base, 'CAD']">
+                <a class="card-detail"  style="color: #000;text-decoration:none;font-size:16px;">
+                    
+                    <p>33 usd -33 eur</p>
+                </a>
+               
+            </div>
+        </div> <div class="cell-part">
+            <div class="card">
+                <div class="card-detail">
+                    
+                    <p>33 usd -33 eur</p>
+                </div>
+               
+            </div>
+        </div> <div class="cell-part">
+            <div class="card">
+                <div class="card-detail">
+                    
+                    <p>33 usd -33 eur</p>
+                </div>
+               
+            </div>
+        </div> <div class="cell-part">
+            <div class="card">
+                <div class="card-detail">
+                    
+                    <p>33 usd -33 eur</p>
+                </div>
+               
+            </div>
+        </div> <div class="cell-part">
+            <div class="card">
+                <div class="card-detail">
+                    
+                    <p>33 usd -33 eur</p>
+                </div>
+               
+            </div>
+        </div> <div class="cell-part">
+            <div class="card">
+                <div class="card-detail">
+                    
+                    <p>33 usd -33 eur</p>
+                </div>
+               
+            </div>
+        </div> <div class="cell-part">
+            <div class="card">
+                <div class="card-detail">
+                    
+                    <p>33 usd -33 eur</p>
+                </div>
+               
+            </div>
+        </div> <div class="cell-part">
+            <div class="card">
+                <div class="card-detail">
+                    
+                    <p>33 usd -33 eur</p>
+                </div>
+               
+            </div>
+        </div> <div class="cell-part">
             <div class="card">
                 <div class="card-detail">
                     
@@ -21,79 +97,8 @@
                
             </div>
         </div>
-        <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> <div class="cell-part">
-            <div class="card">
-                <div class="card-detail">
-                    
-                    <p>33 usd -33 eur</p>
-                </div>
-               
-            </div>
-        </div> -->
+<!-- dummy -->
+
 
     </div>
     

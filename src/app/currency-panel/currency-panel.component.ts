@@ -16,7 +16,9 @@ export class CurrencyPanelComponent implements OnInit {
   title!:any;
   constructor(public currencyService:CurrencyServiceService, public route:ActivatedRoute,
     public router: Router, private _location: Location) { 
-    this.getCurrencyData();
+
+      // call to currency data api
+    this.getCurrencyData();   // uncomment to check
     
 
     if(this.router.url === '/'){
@@ -28,11 +30,12 @@ export class CurrencyPanelComponent implements OnInit {
       }
       this.title ='Currency Exchange';
       // console.log('home');
-      this.default = this.getResult(this.model);
-    }else{
-      // console.log('not   home');
-     
 
+      // in home page default result
+      this.default = this.getResult(this.model);   // uncomment to check
+      
+    }else{
+      // console.log('not   home');     
       this.route.paramMap.subscribe((params:ParamMap) =>{
         this.model = {
           'amount':1,
@@ -40,10 +43,13 @@ export class CurrencyPanelComponent implements OnInit {
           'toCurrency':params.get('to'),
           
         }
-        // console.log(this.model.fromCurrency, 'this.modelthis.model');
+
+
+        // get complete name for title in details page
         this.getName(this.model.fromCurrency);
         
-        this.default = this.getResult(this.model);
+        // in non home page default result
+        this.default = this.getResult(this.model);    // uncomment to check
       });
     }
     
@@ -56,7 +62,7 @@ export class CurrencyPanelComponent implements OnInit {
         if(res){
           let data = res.symbols;
           this.currencyArray = data;
-          // this.currencyArray = Object.keys(data);
+          
           // console.log(this.currencyArray, 'this.currencyArray');
         }
     }); 
@@ -64,7 +70,6 @@ export class CurrencyPanelComponent implements OnInit {
 
 
   getName(title:string){
-    // console.log(title, typeof(title));
     this.title = this.currencyArray[title];
     // console.log(this.title, 'this.titlethis.title ')
   }
@@ -91,6 +96,17 @@ export class CurrencyPanelComponent implements OnInit {
   }
 
   backClicked(){
-    this._location.back();
+    // this._location.back();
+    this.router.navigate(['/']);
+  }
+
+  swpap(from:any, to:any){
+    this.model = {
+      'amount':this.model.amount,
+      'fromCurrency':to,
+      'toCurrency':from,
+      
+    }
+    this.default = this.getResult(this.model);
   }
 }

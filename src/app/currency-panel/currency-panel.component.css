@@ -1,11 +1,16 @@
 .currency-panel{
    margin-top: 50px;
+   /* position: fixed; */
+    width: calc(100% - 50px);
+    width: 100%;
 }
 
 .panel-container{
     border: 1px solid #ddd;
     padding: 20px;
     /* margin: 50px 0; */
+    background-color: aliceblue;
+    
 }
 
 .left-part{
@@ -68,6 +73,8 @@ margin-bottom: 20px;
 }
 select{
     padding: 5px 20px;
+    width: 200px;
+    /* width: 100%; */
 }
 select option{
     border-radius: 0px;

@@ -14,7 +14,10 @@ export class HomeComponent implements OnInit {
       base:'EUR',
       symbols:'INR,USD,GBP,JPY,AED,AFN,ALL,AMD,CAD'
     }
-    this.getlatestData(data);
+
+    // call to latest curreny for cards
+    this.getlatestData(data);     // uncomment to check
+
   }
 
   ngOnInit(): void {
@@ -23,7 +26,6 @@ export class HomeComponent implements OnInit {
   getlatestData(data:any){
     this.currencyService.latestList(data).subscribe((res:any) => {
         if(res){
-          // this.latestyArray = Object.keys(res.rates);
           this.latestyArray =res.rates;
           // console.log(this.currencyArray, 'this.currencyArray', typeof(this.currencyArray));
         }

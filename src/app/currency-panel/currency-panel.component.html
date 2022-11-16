@@ -41,7 +41,7 @@
                     <div class="cell-part">
                         <label>From</label>
                         <select name="from" id="from"  [(ngModel)]="model.fromCurrency" required
-                        #fromCurrency="ngModel"
+                        #fromCurrency="ngModel" [disabled]="f.form.invalid || this.router.url !== '/'"
                         [ngClass]="{ 'is-invalid': f.submitted && fromCurrency.invalid }">                    
                             <option *ngFor="let c of currencyArray | keyvalue" 
                             [value]="c.key" 
@@ -53,14 +53,14 @@
                         
                     </div>
                     <div class="cell-part">
-                        <div class="swap-img">
+                        <div class="swap-img" (click)="swpap(this.model.fromCurrency, this.model.toCurrency)">
                             <img src="../../assets/swap.png"  alt="swap" />
                         </div>
                     </div>
                     <div class="cell-part">
                         <label>To</label>
                         <select name="to" id="to"  [(ngModel)]="model.toCurrency" required
-                        #toCurrency="ngModel"
+                        #toCurrency="ngModel" [disabled]="f.form.invalid"
                         [ngClass]="{ 'is-invalid': f.submitted && toCurrency.invalid }">                    
                             <option *ngFor="let c of currencyArray | keyvalue" 
                             [value]="c.key" 
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="cell-part">
-                            <button class="more-btn" type="button">More Details</button>
+                            <button class="more-btn" type="button" [routerLink]="['/detail', 'EUR', 'GBP']">More Details</button>
                         </div>
                     </div>
                 </div>

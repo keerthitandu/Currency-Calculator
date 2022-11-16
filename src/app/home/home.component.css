@@ -1,6 +1,11 @@
 .home-panel{
     border: 1px solid #ddd;
     padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: calc(100vh - 310px);
+    overflow-y: scroll;
+    height: 400px;
 }
 .row-part{
     display: inline-block;

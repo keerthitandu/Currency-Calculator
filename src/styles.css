@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    
+  }
+
+  button{
+    background-color: blue;
+    color: #fff;
+    font-size: 13px;
+    border: none;
+    padding: 2px 10px;
+    border-radius: 2px;
+  }
+label{
+  display: block;
+  color: #666;
+}
+  input{
+    border: 1px solid #ddd;
+    padding: 5px 5px;
+    font-size: 13px;
+    border-radius: 2px;
+  }
+
+  button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.error-msg{
+  color: red;
+}

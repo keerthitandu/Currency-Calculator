@@ -1,0 +1,98 @@
+<div class="currency-panel">
+    <div class="currency-head">
+        <h3>
+            <span *ngIf="this.router.url !== '/'">
+                {{this.model.fromCurrency}} -
+            </span>
+              {{this.title}}</h3>
+        <div class="cell-part back" >
+            <button class="more-btn" type="button" (click)="backClicked()"
+            *ngIf="this.router.url !== '/'">Back to Home</button>
+        </div>
+    </div>
+    
+    <div class="panel-container">
+        <form name="form"  #f="ngForm" novalidate>
+            <div class="left-part">
+                <div class="row-part">
+                    <div>
+                        <label>Amount</label>
+                        <input type="text" placeholder="Enter amount " [(ngModel)]="model.amount"
+                        name="amount" #amount="ngModel" pattern="^[0-9]*$"
+                        [ngClass]="{ 'is-invalid': f.submitted && amount.invalid }" required />
+                    <div *ngIf="amount.errors?.['required']" class="error-msg">*Amount is required</div>
+                    <div *ngIf="amount.errors?.['pattern']" class="error-msg">Number Only</div>    
+                    </div>
+                </div>
+
+                <div class="row-part">
+
+                </div>
+
+                <div class="row-part">
+                    <div class="default-value">
+                        <!-- {{this.model | json}} -->
+                    1 {{model.fromCurrency}} = {{this.default}} {{model.toCurrency}}
+                    </div>
+                </div>
+            </div>
+            <div class="right-part">
+                <div class="row-part">
+                    <div class="cell-part">
+                        <label>From</label>
+                        <select name="from" id="from"  [(ngModel)]="model.fromCurrency" required
+                        #fromCurrency="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && fromCurrency.invalid }">                    
+                            <option *ngFor="let c of currencyArray | keyvalue" 
+                            [value]="c.key" 
+                            [attr.selected]="model.fromCurrency==c.key ? true : null">
+                            {{c.key}}
+                        </option>
+                                                            
+                        </select>
+                        
+                    </div>
+                    <div class="cell-part">
+                        <div class="swap-img">
+                            <img src="../../assets/swap.png"  alt="swap" />
+                        </div>
+                    </div>
+                    <div class="cell-part">
+                        <label>To</label>
+                        <select name="to" id="to"  [(ngModel)]="model.toCurrency" required
+                        #toCurrency="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && toCurrency.invalid }">                    
+                            <option *ngFor="let c of currencyArray | keyvalue" 
+                            [value]="c.key" 
+                            [attr.selected]="model.toCurrency==c.key ? true : null">
+                            {{c.key}}
+                        </option>
+                    </select>       
+                    </div>
+                </div>
+                <div class="row-part">
+                
+                        <button class="cn-btn" type="button" (click)="f.form.valid && onSubmit()"
+                        [disabled]="f.form.invalid">Convert</button>
+                    
+                </div>
+                <div class="row-part">
+                    <div class="">
+                        <div class="cell-part">
+                            <div class="converted-value">
+                            
+                            <span *ngIf="this.default">{{this.default * this.model.amount }}</span> 
+                                {{this.model.toCurrency}}
+                            </div>
+                        </div>
+                        <div class="cell-part">
+                            <button class="more-btn" type="button">More Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+

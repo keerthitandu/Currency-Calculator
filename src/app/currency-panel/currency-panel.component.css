@@ -1,0 +1,92 @@
+.currency-panel{
+   margin-top: 50px;
+}
+
+.panel-container{
+    border: 1px solid #ddd;
+    padding: 20px;
+    /* margin: 50px 0; */
+}
+
+.left-part{
+    width: 40%;
+    display: inline-block;
+}
+
+.left-part .row-part:nth-child(2){
+
+}
+.left-part input{
+    width: 50%;
+}
+.right-part{
+    width: 60%;
+    display: inline-block;
+}
+
+.row-part{
+display: inline-block;
+width: 100%;
+margin-bottom: 20px;
+}
+.default-value{
+    border: 1px solid #ddd;
+    padding: 5px 5px;
+    font-size: 13px;
+    border-radius: 2px;
+    width: 50%;
+}
+
+.converted-value{
+    border: 1px solid #ddd;
+    padding:10px;
+    font-size: 15px;
+    border-radius: 2px;
+    width:300px; 
+    margin-right: 20px;
+}
+.cn-btn{
+    width: 100%;
+    padding: 5px 5px;
+}
+
+.cell-part{
+    display: inline-block;
+}
+.more-btn{
+    padding:5px 20px;
+}
+.swap-img{
+    padding: 0 20px;
+}
+.swap-img img{
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+}
+select{
+    padding: 5px 20px;
+}
+select option{
+    border-radius: 0px;
+}
+
+.currency-head{
+    position: relative;
+    margin: 20px 0;
+    min-height: 50px;
+}
+.currency-head h3{
+    display: inline-block;
+}
+.back{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+   
+}
+.back .more-btn{
+    cursor: pointer;
+}

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
       base:'EUR',
       symbols:'INR,USD,GBP,JPY,AED,AFN,ALL,AMD,CAD'
     }
-    // this.getlatestData(data);
+    this.getlatestData(data);
   }
 
   ngOnInit(): void {

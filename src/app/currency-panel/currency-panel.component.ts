@@ -15,7 +15,7 @@ export class CurrencyPanelComponent implements OnInit {
 
   title!:any;
   constructor(public currencyService:CurrencyServiceService, public route:ActivatedRoute,
-    public router: Router, private _location: Location) { 
+    public router: Router) { 
 
       // call to currency data api
     this.getCurrencyData();   // uncomment to check
@@ -29,13 +29,10 @@ export class CurrencyPanelComponent implements OnInit {
        
       }
       this.title ='Currency Exchange';
-      // console.log('home');
-
       // in home page default result
-      this.default = this.getResult(this.model);   // uncomment to check
-      
-    }else{
-      // console.log('not   home');     
+      this.getResult(this.model);   // uncomment to check  
+
+    }else{        
       this.route.paramMap.subscribe((params:ParamMap) =>{
         this.model = {
           'amount':1,
@@ -43,13 +40,11 @@ export class CurrencyPanelComponent implements OnInit {
           'toCurrency':params.get('to'),
           
         }
-
-
         // get complete name for title in details page
         this.getName(this.model.fromCurrency);
         
         // in non home page default result
-        this.default = this.getResult(this.model);    // uncomment to check
+        this.getResult(this.model);    // uncomment to check
       });
     }
     
@@ -57,13 +52,12 @@ export class CurrencyPanelComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   getCurrencyData(){
     this.currencyService.getCurrencyList().subscribe((res:any) => {
         if(res){
           let data = res.symbols;
           this.currencyArray = data;
-          
-          // console.log(this.currencyArray, 'this.currencyArray');
         }
     }); 
   }
@@ -88,8 +82,9 @@ export class CurrencyPanelComponent implements OnInit {
       amount:form.amount
     }
     this.currencyService.getConvertedData(data).subscribe((res:any) => {
-      if(res){       
-        return res.result;
+      if(res){  
+        this.default =res.result ;  
+
       }
    }); 
 

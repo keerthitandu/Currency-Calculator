@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 import { catchError, map, Observable, throwError } from 'rxjs';
-// import { CurrencyList } from './shared/currency-list';
+
+import { shareReplay } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class CurrencyServiceService {
 
   
   constructor(private http: HttpClient ) {
-
+    
     
    }
 
@@ -19,9 +20,10 @@ export class CurrencyServiceService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'apikey':"gXNwqGexm2B5edIoBLbgUHCP8bYeDyMG"
+      'apikey':'T9hVLt6PVxHyMxaeUKOYYS4i6JnVPl4m'
     }),
   };
+
   // HttpClient API get() method => Fetch currency list
   getCurrencyList(): Observable<any[]> {
     return this.http
@@ -45,9 +47,17 @@ export class CurrencyServiceService {
     return this.http
       .get<any[]>(this.apiURL + '/latest?symbols='+ req.symbols +'&base='+req.base ,
        {headers:this.httpOptions.headers})
-      .pipe( catchError(this.handleError));
+      .pipe(shareReplay(), catchError(this.handleError));
   }
 
+
+  getMapData(req:any): Observable<any[]> {
+    // console.log(req,'reqreq')
+    return this.http.get<any[]>(this.apiURL + '/timeseries?start_date='+ req.start_date +'&end_date='+ req.end_date +'&symbols='+ req.symbols +'&base='+req.base, 
+    {headers:this.httpOptions.headers})
+    .pipe(shareReplay(), catchError(this.handleError));
+  }
+  
 
   // Error handling
   handleError(error: any) {

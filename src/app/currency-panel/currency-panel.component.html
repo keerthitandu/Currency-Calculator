@@ -81,12 +81,13 @@
                         <div class="cell-part">
                             <div class="converted-value">
                             
-                            <span *ngIf="this.default">{{this.default * this.model.amount }}</span> 
+                            <span *ngIf="this.default">
+                                {{this.default * this.model.amount }}</span> 
                                 {{this.model.toCurrency}}
                             </div>
                         </div>
-                        <div class="cell-part">
-                            <button class="more-btn" type="button" [routerLink]="['/detail', 'EUR', 'GBP']">More Details</button>
+                        <div class="cell-part"  *ngIf="this.router.url === '/'">
+                            <button class="more-btn" type="button" [routerLink]="['/detail',this.model.fromCurrency , this.model.toCurrency]">More Details</button>
                         </div>
                     </div>
                 </div>

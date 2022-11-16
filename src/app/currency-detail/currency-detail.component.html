@@ -1,5 +1,12 @@
 <app-currency-panel ></app-currency-panel>
 
 <div class="detail-panel">
-    <h2>Historical Charts</h2>
+    <h2>Historical Charts |
+        {{this.fromC}} - {{this.ToC}}
+    </h2>
+
+    <div class="chart-container">
+        <canvas  id="MyChart" >{{ chart }}</canvas>
+  </div>
+
     </div>

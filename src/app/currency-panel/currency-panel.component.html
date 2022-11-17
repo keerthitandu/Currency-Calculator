@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div class="cell-part"  *ngIf="this.router.url === '/'" >
-                            <button class="more-btn" type="button" [disabled]="f.form.invalid" [routerLink]="['/detail',this.model.fromCurrency , this.model.toCurrency]">More Details</button>
+                            <button class="more-btn" type="button" [disabled]="f.form.invalid" [routerLink]="['/detail',this.model.fromCurrency , this.model.toCurrency, this.model.amount]">More Details</button>
                         </div>
                     </div>
                 </div>

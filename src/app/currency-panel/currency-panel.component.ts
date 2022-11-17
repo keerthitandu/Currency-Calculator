@@ -15,33 +15,35 @@ export class CurrencyPanelComponent implements OnInit {
   default!:any;
 
   title!:string;
+
+  
   constructor(public currencyService:CurrencyServiceService, public route:ActivatedRoute,
     public router: Router) { 
 
       // call to currency data api
-    this.getCurrencyData();   // uncomment to check
+    // this.getCurrencyData();   // uncomment to check
     
     if(this.router.url === '/'){
       this.model = {
         'amount':1,
         'fromCurrency':'EUR',
-        'toCurrency':'GBP',       
+        'toCurrency':'USD',       
       }
       this.title ='Currency Exchange';
       // in home page default result
-      this.getResult(this.model);   // uncomment to check  
+      // this.getResult(this.model);   // uncomment to check  
 
     }else{        
-      this.route.paramMap.subscribe((params:ParamMap) =>{
+      this.route.paramMap.subscribe((params:any) =>{
         this.model = {
-          'amount':1,
+          'amount':params.get('amount'),
           'fromCurrency':params.get('from'),
           'toCurrency':params.get('to'),
           
         }
        
         // in non home page default result
-        this.getResult(this.model);    // uncomment to check
+        // this.getResult(this.model);    // uncomment to check
       });
     }
     

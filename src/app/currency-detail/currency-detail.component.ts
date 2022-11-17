@@ -52,7 +52,7 @@ export class CurrencyDetailComponent implements OnInit {
     this.fromC = eventData.model.fromCurrency;
     this.ToC = eventData.model.toCurrency;
     if(this.router.url !== '/'){
-      this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api
+      // this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api
     }
    }
 

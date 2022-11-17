@@ -5,18 +5,9 @@ import { CurrencyServiceService } from './currency-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  implements OnInit{
- 
-  constructor(public currencyService:CurrencyServiceService) {
-    
-    
-  }
- 
- 
-  ngOnInit(): void {
-    
-  }
-
+export class AppComponent { 
+  constructor(public currencyService:CurrencyServiceService) {}
+  
  
 
 }

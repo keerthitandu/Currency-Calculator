@@ -25,23 +25,21 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 #### Home Page
 
 ###### Before Conversion
-<div![1](https://user-images.githubusercontent.com/104460185/202502662-b350f0fb-c51d-49c3-8880-b020397b1e25.png)
- align="center"> 
 
-"/>
-</div>
+![1](https://user-images.githubusercontent.com/104460185/202502864-ff81a7a5-dfd2-48d8-af37-7615f66e3eae.png)
+
 
 ###### Validation
-<div align="center"> 
-<img style="border:1px solid gray"  src="2.png"/>
-</div>
+
+![2](https://user-images.githubusercontent.com/104460185/202502914-20be1447-e0ce-409e-b289-697614bb2f36.png)
+
 
 ###### After Conversion
-<div align="center"> 
-<img style="border:1px solid gray"  src="3.png"/>
-</div>
+
+![3](https://user-images.githubusercontent.com/104460185/202502957-f2e0b7f7-732c-4e82-982c-6d321c4438e3.png)
+
+
 #### Detail  Page
 
-<div align="center"> 
-<img style="border:1px solid gray"  src="4.png"/>
-</div>
+
+![4](https://user-images.githubusercontent.com/104460185/202502996-8dc580f2-72a3-4145-9a36-44bad9c91d6b.png)

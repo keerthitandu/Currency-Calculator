@@ -43,7 +43,7 @@ export class HomeComponent  {
       }
   
       // call to latest curreny for cards
-      // this.getlatestData(data);     // uncomment to check
+      this.getlatestData(data);     // uncomment to check
     }
     
   }

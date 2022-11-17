@@ -52,7 +52,7 @@ export class CurrencyDetailComponent implements OnInit {
     this.fromC = eventData.model.fromCurrency;
     this.ToC = eventData.model.toCurrency;
     if(this.router.url !== '/'){
-      // this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api
+      this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api
     }
    }
 
@@ -60,7 +60,6 @@ export class CurrencyDetailComponent implements OnInit {
     var d = new Date();
     var pastYear = d.getFullYear() - 1;
     d.setFullYear(pastYear);
-    // console.log(d.toISOString().slice(0, 10));
     return d.toISOString().slice(0, 10);
   }
 
@@ -108,7 +107,6 @@ export class CurrencyDetailComponent implements OnInit {
 
     }
     this.currencyService.getMapData(data).subscribe((res:any) => {
-      // console.log(res)
       if(res){        
         this.mapArray =  res.rates;        
    

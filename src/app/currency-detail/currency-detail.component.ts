@@ -45,7 +45,7 @@ export class CurrencyDetailComponent implements OnInit {
 
   ngOnInit():void {
     this.last_day_of_month();
-    this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api    
+    // this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api    
   }
 
 

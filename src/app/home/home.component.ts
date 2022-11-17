@@ -7,8 +7,8 @@ import { CurrencyServiceService } from '../currency-service.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  latestyArray:any=[];
-  base:string="EUR"
+  latestyArray:any=[]=[];
+  base:string="EUR";
   constructor( public currencyService:CurrencyServiceService) { 
     let data={
       base:'EUR',
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getlatestData(data:any){
+  getlatestData(data:any):any{
     this.currencyService.latestList(data).subscribe((res:any) => {
         if(res){
           this.latestyArray =res.rates;

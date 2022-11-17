@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CurrencyServiceService } from '../currency-service.service';
-import {Location} from '@angular/common';
+import { IModel } from '../shared/modelDto';
+
 @Component({
   selector: 'app-currency-panel',
   templateUrl: './currency-panel.component.html',
   styleUrls: ['./currency-panel.component.css']
 })
 export class CurrencyPanelComponent implements OnInit {
-  currencyArray:any=[];
-  model: any = {};
-  result:any;
-  default:any;
+  currencyArray:any[]=[];
+  model!: IModel;
+  result!:any;
+  default!:any;
 
-  title!:any;
+  title!:string;
   constructor(public currencyService:CurrencyServiceService, public route:ActivatedRoute,
     public router: Router) { 
 
       // call to currency data api
     this.getCurrencyData();   // uncomment to check
     
-
     if(this.router.url === '/'){
       this.model = {
         'amount':1,
         'fromCurrency':'EUR',
-        'toCurrency':'GBP',
-       
+        'toCurrency':'GBP',       
       }
       this.title ='Currency Exchange';
       // in home page default result
@@ -53,7 +52,7 @@ export class CurrencyPanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getCurrencyData(){
+  getCurrencyData():any{
     this.currencyService.getCurrencyList().subscribe((res:any) => {
         if(res){
           let data = res.symbols;
@@ -63,18 +62,23 @@ export class CurrencyPanelComponent implements OnInit {
   }
 
 
-  getName(title:string){
+  getName(title:any):any{
     this.title = this.currencyArray[title];
     // console.log(this.title, 'this.titlethis.title ')
   }
 
-  onSubmit(){
+  onSubmit():any{
   // console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
-    this.result = this.getResult(this.model);
+    this.getResult(this.model);
   }
 
-
-  getResult(form:any){
+  onChange(event:any):any{
+    // console.log(event);
+    if(event){
+      this.default = 0;
+    }
+  }
+  getResult(form:IModel):any{
     // return 10;
     let data = {
       to:form.toCurrency,
@@ -84,24 +88,25 @@ export class CurrencyPanelComponent implements OnInit {
     this.currencyService.getConvertedData(data).subscribe((res:any) => {
       if(res){  
         this.default =res.result ;  
-
+        this.result = res.result;
       }
    }); 
+   
 
   }
 
-  backClicked(){
+  backClicked():any{
     // this._location.back();
     this.router.navigate(['/']);
   }
 
-  swpap(from:any, to:any){
+  swpap(from:any, to:any):any{
     this.model = {
       'amount':this.model.amount,
       'fromCurrency':to,
       'toCurrency':from,
       
     }
-    this.default = this.getResult(this.model);
+     this.getResult(this.model);
   }
 }

@@ -9,12 +9,8 @@ import { shareReplay } from 'rxjs';
 export class CurrencyServiceService {
    // Define API
    apiURL = 'https://api.apilayer.com/fixer';
-
   
-  constructor(private http: HttpClient ) {
-    
-    
-   }
+  constructor(private http: HttpClient ) {}
 
   // Http Options
   httpOptions = {
@@ -24,41 +20,31 @@ export class CurrencyServiceService {
     }),
   };
 
-  // HttpClient API get() method => Fetch currency list
-  getCurrencyList(): Observable<any[]> {
-    return this.http
-      .get<any[]>(this.apiURL + '/symbols', {headers:this.httpOptions.headers})
-      .pipe(map((res: any) => {       
-        return res;
-      }), catchError(this.handleError));
-  }
-
- 
-
-  getConvertedData(req:any): Observable<any[]> {
-    return this.http
-      .get<any[]>(this.apiURL + '/convert?to=' + req.to + '&from=' + req.from + '&amount=' + req.amount,
-       {headers:this.httpOptions.headers})
-      .pipe( catchError(this.handleError));
-  }
-
-
-  latestList(req:any): Observable<any[]> {
-    return this.http
-      .get<any[]>(this.apiURL + '/latest?symbols='+ req.symbols +'&base='+req.base ,
-       {headers:this.httpOptions.headers})
-      .pipe(shareReplay(), catchError(this.handleError));
-  }
-
-
-  getMapData(req:any): Observable<any[]> {
-    // console.log(req,'reqreq')
-    return this.http.get<any[]>(this.apiURL + '/timeseries?start_date='+ req.start_date +'&end_date='+ req.end_date +'&symbols='+ req.symbols +'&base='+req.base, 
+  // generic get Method
+  getMethod(url:string): Observable<any[]>{
+    return this.http.get<any[]>(this.apiURL + url, 
     {headers:this.httpOptions.headers})
     .pipe(shareReplay(), catchError(this.handleError));
   }
-  
 
+
+  // HttpClient API get() method => Fetch currency list
+  getCurrencyList(): Observable<any[]> {
+    return this.getMethod('/symbols');
+  }
+ 
+  getConvertedData(req:any): Observable<any[]> {
+    return this.getMethod('/convert?to=' + req.to + '&from=' + req.from + '&amount=' + req.amount);
+  }
+
+  latestList(req:any): Observable<any[]>  {    
+    return this.getMethod('/latest?symbols='+ req.symbols +'&base='+req.base);
+  }
+
+  getMapData(req:any): Observable<any[]> { 
+    return this.getMethod('/timeseries?start_date='+ req.start_date +'&end_date='+ req.end_date +'&symbols='+ req.symbols +'&base='+req.base);
+  }
+  
   // Error handling
   handleError(error: any) {
     let errorMessage = '';
@@ -74,4 +60,5 @@ export class CurrencyServiceService {
       return errorMessage;
     });
   }
+
 }

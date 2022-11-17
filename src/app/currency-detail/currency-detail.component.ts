@@ -43,13 +43,13 @@ export class CurrencyDetailComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.last_day_of_month();
     this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api    
   }
 
 
-  lastYearDateCall(){
+  lastYearDateCall():any{
     var d = new Date();
     var pastYear = d.getFullYear() - 1;
     d.setFullYear(pastYear);
@@ -57,7 +57,7 @@ export class CurrencyDetailComponent implements OnInit {
     return d.toISOString().slice(0, 10);
   }
 
-  createChart(data:any){
+  createChart(data:any):any{
       this.xAxisArray.forEach((element:any) => {
         if(this.mapArray[element]){
           this.yAxisArray.push(this.mapArray[element][this.ToC])
@@ -85,7 +85,7 @@ export class CurrencyDetailComponent implements OnInit {
   }
 
 
-  getGraph(startdate:any, endDate:any){
+  getGraph(startdate:any, endDate:any):any{
     let data = {
       'start_date':startdate,
       'end_date':endDate,
@@ -109,7 +109,7 @@ export class CurrencyDetailComponent implements OnInit {
 
   
 
-  last_day_of_month() {  
+  last_day_of_month():any {  
     var monthCounter = this.currentMonth;
     var yearCounter = this.currentYear;
     var i = 0
@@ -135,7 +135,7 @@ export class CurrencyDetailComponent implements OnInit {
   }
 
 
-  lastday(y:any,m:any){
+  lastday(y:any,m:any):any{
     return  new Date(y, m , 0).getDate();
   }
 

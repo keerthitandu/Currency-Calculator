@@ -4,7 +4,7 @@
     text-align: center;
     position: fixed;
     width: 100%;
-    top: calc(100vh - 310px);
+    top: calc(100vh - 270px);
     overflow-y: scroll;
     height: 400px;
 }

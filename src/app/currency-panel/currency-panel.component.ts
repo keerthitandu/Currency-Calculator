@@ -19,7 +19,7 @@ export class CurrencyPanelComponent implements OnInit {
     public router: Router) { 
 
       // call to currency data api
-    // this.getCurrencyData();   // uncomment to check
+    this.getCurrencyData();   // uncomment to check
     
     if(this.router.url === '/'){
       this.model = {
@@ -29,7 +29,7 @@ export class CurrencyPanelComponent implements OnInit {
       }
       this.title ='Currency Exchange';
       // in home page default result
-      // this.getResult(this.model);   // uncomment to check  
+      this.getResult(this.model);   // uncomment to check  
 
     }else{        
       this.route.paramMap.subscribe((params:ParamMap) =>{
@@ -41,7 +41,7 @@ export class CurrencyPanelComponent implements OnInit {
         }
        
         // in non home page default result
-        // this.getResult(this.model);    // uncomment to check
+        this.getResult(this.model);    // uncomment to check
       });
     }
     

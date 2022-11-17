@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     }
 
     // call to latest curreny for cards
-    // this.getlatestData(data);     // uncomment to check
+    this.getlatestData(data);     // uncomment to check
 
   }
 

@@ -22,6 +22,8 @@ export class CurrencyDetailComponent implements OnInit {
   lastYearDate:any;
   currentYearDate:any;
 
+  dateArray:any[]=[];
+
   xAxisArray:any=[];
   yAxisArray:any=[];
 
@@ -45,7 +47,7 @@ export class CurrencyDetailComponent implements OnInit {
 
   ngOnInit():void {
     this.last_day_of_month();
-    // this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api    
+    this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api    
   }
 
 
@@ -57,13 +59,21 @@ export class CurrencyDetailComponent implements OnInit {
     return d.toISOString().slice(0, 10);
   }
 
+  getMonthName(passed:any){
+    let date = new Date(passed);  // 2009-11-10
+    let monthY = date.toLocaleString('default', { month: 'long' }) + ',' + date.getFullYear();
+    return monthY;
+  }
+  
   createChart(data:any):any{
-      this.xAxisArray.forEach((element:any) => {
+      this.dateArray.forEach((element:any) => {
         if(this.mapArray[element]){
-          this.yAxisArray.push(this.mapArray[element][this.ToC])
+          this.yAxisArray.push(this.mapArray[element][this.ToC]);
+          this.xAxisArray.push(this.getMonthName(element));
         }                
     });
 
+    console.log(this.xAxisArray, 'this.xAxisArray')
     this.chart = new Chart("MyChart", {
       type: 'line', //this denotes tha type of chart
 
@@ -131,7 +141,7 @@ export class CurrencyDetailComponent implements OnInit {
       i++;
     }
 
-    this.xAxisArray = x;
+    this.dateArray = x;
   }
 
 

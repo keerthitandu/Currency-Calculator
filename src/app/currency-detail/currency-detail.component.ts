@@ -108,7 +108,7 @@ export class CurrencyDetailComponent implements OnInit {
 
     }
     this.currencyService.getMapData(data).subscribe((res:any) => {
-      console.log(res)
+      // console.log(res)
       if(res){        
         this.mapArray =  res.rates;        
    

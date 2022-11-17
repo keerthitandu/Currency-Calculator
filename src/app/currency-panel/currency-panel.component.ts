@@ -85,7 +85,6 @@ export class CurrencyPanelComponent  {
     }
   }
   getResult(form:IModel):any{
-    // return 10;
     let data = {
       to:form.toCurrency,
       from:form.fromCurrency,
@@ -102,7 +101,6 @@ export class CurrencyPanelComponent  {
   }
 
   backClicked():any{
-    // this._location.back();
     this.router.navigate(['/']);
   }
 

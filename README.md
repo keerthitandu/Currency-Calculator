@@ -1,14 +1,16 @@
 # Currency Converter App
 
+This simple application provides a web-based interface for exchanging/converting money from one currency (say EUR) to another currency (say USD) by  using data fetched from an open-source API: [API-Layer] https://apilayer.com/marketplace/fixer-api/.
 
-The app is built for performing currency conversion using data fetched from an open-source API: [APi Layer] https://apilayer.com/marketplace/fixer-api/.
-## Development server
+## How to setup in local
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
++ Download the package
++ Install nodejs
++ Go to Project directory
++ Run `npm install` to install all initial dependencies from `package.json`
++ Update the `api key` in `currency-service.service.ts` file
++ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -18,10 +20,26 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## About the application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+#### Home Page
 
-## Further help
+###### Before Conversion
+<div align="center"> 
+<img style="border:1px solid gray"  src="1.png"/>
+</div>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+###### Validation
+<div align="center"> 
+<img style="border:1px solid gray"  src="2.png"/>
+</div>
+
+###### After Conversion
+<div align="center"> 
+<img style="border:1px solid gray"  src="3.png"/>
+</div>
+#### Detail  Page
+
+<div align="center"> 
+<img style="border:1px solid gray"  src="4.png"/>
+</div>

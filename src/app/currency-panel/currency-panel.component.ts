@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CurrencyServiceService } from '../currency-service.service';
 import { IModel } from '../shared/modelDto';
@@ -9,19 +9,20 @@ import { IModel } from '../shared/modelDto';
   styleUrls: ['./currency-panel.component.css']
 })
 export class CurrencyPanelComponent implements OnInit {
-  currencyArray:any[]=[];
-  model!: IModel;
-  result!:any;
+  currencyArray:string[]=[];
+  result!:string;
   default!:any;
 
   title!:string;
 
-  
+  @Output() modelDataCreated = new EventEmitter<{ model: IModel }>();
+  model!: IModel;
+
   constructor(public currencyService:CurrencyServiceService, public route:ActivatedRoute,
     public router: Router) { 
 
-      // call to currency data api
-    // this.getCurrencyData();   // uncomment to check
+    // call to currency data api
+    this.getCurrencyData();   // uncomment to check
     
     if(this.router.url === '/'){
       this.model = {
@@ -30,20 +31,20 @@ export class CurrencyPanelComponent implements OnInit {
         'toCurrency':'USD',       
       }
       this.title ='Currency Exchange';
+
       // in home page default result
-      // this.getResult(this.model);   // uncomment to check  
+      this.getResult(this.model);   // uncomment to check  
 
     }else{        
       this.route.paramMap.subscribe((params:any) =>{
         this.model = {
           'amount':params.get('amount'),
           'fromCurrency':params.get('from'),
-          'toCurrency':params.get('to'),
-          
+          'toCurrency':params.get('to'),          
         }
        
         // in non home page default result
-        // this.getResult(this.model);    // uncomment to check
+        this.getResult(this.model);    // uncomment to check
       });
     }
     
@@ -52,6 +53,10 @@ export class CurrencyPanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onModelUpdate() {
+    this.modelDataCreated.emit({ model: this.model });
+  }
+  
   getCurrencyData():any{
     this.currencyService.getCurrencyList().subscribe((res:any) => {
         if(res){
@@ -68,18 +73,14 @@ export class CurrencyPanelComponent implements OnInit {
 
 
   getName(title:any):any{
-    console.log(title, 'title', this.currencyArray);
     this.title = this.currencyArray[title];
-    console.log(this.title, 'this.titlethis.title ')
   }
 
   onSubmit():any{
-  // console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
     this.getResult(this.model);
   }
 
   onChange(event:any):any{
-    // console.log(event);
     if(event){
       this.default = 0;
     }
@@ -93,8 +94,8 @@ export class CurrencyPanelComponent implements OnInit {
     }
     this.currencyService.getConvertedData(data).subscribe((res:any) => {
       if(res){  
-        this.default =res.result ;  
-        this.result = res.result;
+        this.default =res.result ;          
+        this.onModelUpdate();
       }
    }); 
    

@@ -1,4 +1,5 @@
 <div class="currency-panel">
+    <!-- <button (click)="onAddTitle()">Add Title</button> -->
     <div class="currency-head">
         <h3>
             <span *ngIf="this.router.url !== '/'">
@@ -30,6 +31,7 @@
                 </div>
 
                 <div class="row-part">
+                    <label>Rate</label>
                     <div class="default-value">
                         <!-- {{this.model | json}} -->
                     1 {{model.fromCurrency}} = 
@@ -83,6 +85,7 @@
                 <div class="row-part">
                     <div class="">
                         <div class="cell-part">
+                            <label>Converted Value</label>
                             <div class="converted-value">
                            
                             <span *ngIf="this.default && f.form.valid">
@@ -100,5 +103,7 @@
 
         </form>
     </div>
+
+
 </div>
 

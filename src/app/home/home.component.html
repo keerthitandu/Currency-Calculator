@@ -1,12 +1,12 @@
 <!-- child compoent -->
-<app-currency-panel ></app-currency-panel>  
+<app-currency-panel (modelDataCreated)=onBookAdded($event)></app-currency-panel>  
 
 
 <div class="home-panel">
     <h2>Latest Currencies List</h2>
     <div class="row-part">
         <div class="cell-part" *ngFor="let r of latestyArray | keyvalue">
-            <div class="card" [routerLink]="['/detail', this.base, r.key, 1]">
+            <div class="card" [routerLink]="['/detail', this.base, r.key, this.amount]">
                 <a class="card-detail"  style="color: #000;text-decoration:none;font-size:16px;">
                  
                     <p>1 <b>{{this.base}}</b>  - {{r.value}} <b>{{r.key}}</b></p>

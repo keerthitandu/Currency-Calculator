@@ -13,27 +13,25 @@ import Chart from 'chart.js/auto';
 export class CurrencyDetailComponent implements OnInit {
   fromC!:any;
   ToC!:any;
-  mapArray:any=[];
+  mapArray:string[]=[];
   public chart: any;
   currentYear:any;
   currentMonth:any;
   currentDate:any;
 
-  lastYearDate:any;
+  lastYearDate!:string;
   currentYearDate:any;
 
-  dateArray:any[]=[];
+  dateArray:string[]=[];
 
-  xAxisArray:any=[];
-  yAxisArray:any=[];
+  xAxisArray:string[]=[];
+  yAxisArray:string[]=[];
 
   
   constructor(public currencyService:CurrencyServiceService, public route:ActivatedRoute,
     public router: Router) {
     this.route.paramMap.subscribe((params:ParamMap) =>{
 
-      this.ToC = params.get('to');
-      this.fromC = params.get('from');
       this.currentYear = new Date().getFullYear();
       this.currentMonth = new Date().getMonth() + 1;
 
@@ -47,9 +45,16 @@ export class CurrencyDetailComponent implements OnInit {
 
   ngOnInit():void {
     this.last_day_of_month();
-    // this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api    
+        
   }
 
+  onBookAdded(eventData:any) {
+    this.fromC = eventData.model.fromCurrency;
+    this.ToC = eventData.model.toCurrency;
+    if(this.router.url !== '/'){
+      this.getGraph(this.lastYearDate, this.currentYearDate);      // call timeseries graph api
+    }
+   }
 
   lastYearDateCall():any{
     var d = new Date();
@@ -73,7 +78,6 @@ export class CurrencyDetailComponent implements OnInit {
         }                
     });
 
-    console.log(this.xAxisArray, 'this.xAxisArray')
     this.chart = new Chart("MyChart", {
       type: 'line', //this denotes tha type of chart
 

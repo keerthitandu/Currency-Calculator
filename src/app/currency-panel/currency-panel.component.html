@@ -33,7 +33,7 @@
                     <div class="default-value">
                         <!-- {{this.model | json}} -->
                     1 {{model.fromCurrency}} = 
-                    <span *ngIf="this.default">{{this.default}}</span> {{model.toCurrency}}
+                    <span *ngIf="this.default">{{this.default | number : '1.2-2'}}</span> {{model.toCurrency}}
                     </div>
                 </div>
             </div>
@@ -55,9 +55,10 @@
                         
                     </div>
                     <div class="cell-part">
-                        <div class="swap-img" (click)="swpap(this.model.fromCurrency, this.model.toCurrency)">
+                        <button class="swap-img" (click)="swpap(this.model.fromCurrency, this.model.toCurrency)"
+                        [disabled]="f.form.invalid">
                             <img src="../../assets/swap.png"  alt="swap" />
-                        </div>
+                        </button>
                     </div>
                     <div class="cell-part">
                         <label>To</label>
@@ -83,14 +84,15 @@
                     <div class="">
                         <div class="cell-part">
                             <div class="converted-value">
-                            
-                            <span *ngIf="this.default">
-                                {{this.default * this.model.amount }}</span> 
+                           
+                            <span *ngIf="this.default && f.form.valid">
+                                {{ (this.default * this.model.amount) | number : '1.2-2' }}
+                            </span> 
                                 {{this.model.toCurrency}}
                             </div>
                         </div>
-                        <div class="cell-part"  *ngIf="this.router.url === '/'">
-                            <button class="more-btn" type="button" [routerLink]="['/detail',this.model.fromCurrency , this.model.toCurrency]">More Details</button>
+                        <div class="cell-part"  *ngIf="this.router.url === '/'" >
+                            <button class="more-btn" type="button" [disabled]="f.form.invalid" [routerLink]="['/detail',this.model.fromCurrency , this.model.toCurrency]">More Details</button>
                         </div>
                     </div>
                 </div>

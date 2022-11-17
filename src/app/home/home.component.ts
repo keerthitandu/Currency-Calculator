@@ -9,10 +9,14 @@ import { CurrencyServiceService } from '../currency-service.service';
 export class HomeComponent implements OnInit {
   latestyArray:any=[]=[];
   base:string="EUR";
+  popularCurrencies:string[]=[
+    'INR','USD','GBP','JPY','AED','AFN','AMD','CAD','EUR', 'AUD'
+  ];
+
   constructor( public currencyService:CurrencyServiceService) { 
     let data={
       base:'EUR',
-      symbols:'INR,USD,GBP,JPY,AED,AFN,ALL,AMD,CAD'
+      symbols:this.popularCurrencies.join(",")
     }
 
     // call to latest curreny for cards

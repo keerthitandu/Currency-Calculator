@@ -63,13 +63,17 @@ margin-bottom: 20px;
 }
 .swap-img{
     padding: 0 20px;
+    background: transparent !important;
+    opacity: 1 !important;
+    border: none !important;
 }
+
 .swap-img img{
     height: 15px;
     width: 15px;
     vertical-align: middle;
     display: inline-block;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 select{
     padding: 5px 20px;

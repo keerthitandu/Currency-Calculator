@@ -39,9 +39,7 @@ export class CurrencyPanelComponent implements OnInit {
           'toCurrency':params.get('to'),
           
         }
-        // get complete name for title in details page
-        this.getName(this.model.fromCurrency);
-        
+       
         // in non home page default result
         this.getResult(this.model);    // uncomment to check
       });
@@ -57,14 +55,20 @@ export class CurrencyPanelComponent implements OnInit {
         if(res){
           let data = res.symbols;
           this.currencyArray = data;
+
+           // get complete name for title in details page
+          if(this.router.url !== '/'){
+            this.getName(this.model.fromCurrency);
+          }
         }
     }); 
   }
 
 
   getName(title:any):any{
+    console.log(title, 'title', this.currencyArray);
     this.title = this.currencyArray[title];
-    // console.log(this.title, 'this.titlethis.title ')
+    console.log(this.title, 'this.titlethis.title ')
   }
 
   onSubmit():any{

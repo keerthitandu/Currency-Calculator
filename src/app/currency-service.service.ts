@@ -16,7 +16,7 @@ export class CurrencyServiceService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'apikey':'T9hVLt6PVxHyMxaeUKOYYS4i6JnVPl4m'
+      'apikey':'YTsD8HnRUW3gdfRUDafjjFQTkqTX0UXK'
     }),
   };
 
@@ -30,19 +30,19 @@ export class CurrencyServiceService {
 
   // HttpClient API get() method => Fetch currency list
   getCurrencyList(): Observable<any[]> {
-    return this.getMethod('/symbols');
+    return this.getMethod(`/symbols`);
   }
  
   getConvertedData(req:any): Observable<any[]> {
-    return this.getMethod('/convert?to=' + req.to + '&from=' + req.from + '&amount=' + req.amount);
+    return this.getMethod( `/convert?to=${req.to}&from=${req.from}&amount=${req.amount}`);
   }
 
   latestList(req:any): Observable<any[]>  {    
-    return this.getMethod('/latest?symbols='+ req.symbols +'&base='+req.base);
+    return this.getMethod(`/latest?symbols=${req.symbols}&base=${req.base}`);
   }
 
   getMapData(req:any): Observable<any[]> { 
-    return this.getMethod('/timeseries?start_date='+ req.start_date +'&end_date='+ req.end_date +'&symbols='+ req.symbols +'&base='+req.base);
+    return this.getMethod(`/timeseries?start_date=${req.start_date}&end_date=${req.end_date}&symbols=${req.symbols}&base=${req.base}`);
   }
   
   // Error handling

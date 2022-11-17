@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CurrencyServiceService } from '../currency-service.service';
 import { IModel } from '../shared/modelDto';
@@ -8,7 +8,7 @@ import { IModel } from '../shared/modelDto';
   templateUrl: './currency-panel.component.html',
   styleUrls: ['./currency-panel.component.css']
 })
-export class CurrencyPanelComponent implements OnInit {
+export class CurrencyPanelComponent  {
   currencyArray:string[]=[];
   result!:string;
   default!:any;
@@ -50,8 +50,7 @@ export class CurrencyPanelComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {
-  }
+  
 
   onModelUpdate() {
     this.modelDataCreated.emit({ model: this.model });

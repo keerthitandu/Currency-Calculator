@@ -16,7 +16,7 @@ export class CurrencyServiceService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'apikey':'YTsD8HnRUW3gdfRUDafjjFQTkqTX0UXK'
+      'apikey':'OZOpvLLhDCW2FPkYnutbaJf6OJtbLqOF'
     }),
   };
 

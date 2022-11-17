@@ -111,8 +111,7 @@ export class CurrencyDetailComponent implements OnInit {
       console.log(res)
       if(res){        
         this.mapArray =  res.rates;        
-        // console.log(this.mapArray, 'this.mapArray');   
-
+   
         // call chart after rates data
         this.createChart(this.mapArray);
       }
